@@ -1,7 +1,7 @@
 # Smart Candidate Screening System
 
-**Live Deployed Application:** [https://your-frontend-link.onrender.com](https://your-frontend-link.onrender.com)  *(Replace with your actual live link)*  
-**GitHub Repository:** [https://github.com/webermayank/CGAnalyser](https://github.com/webermayank/CGAnalyser)  *(Replace with actual repo link)*  
+**Live Deployed Application:** [https://your-frontend-link.onrender.com]([https://your-frontend-link.onrender.com](https://cg-analyser-chi.vercel.app/))   
+**GitHub Repository:** [https://github.com/webermayank/CGAnalyser](https://github.com/webermayank/CGAnalyser)  
 
 ---
 
@@ -46,15 +46,19 @@ For full transparency, the dashboard generates a plain-English explanation for e
 
 ### The Dashboard & Student List View
 This is the main screen the placement coordinator sees. It provides a clean, enterprise-grade data table showing all candidates, alongside quick summary metrics at the top.
-![Dashboard Overview - Shows stats and main table](screenshot-dashboard.png)
+<img width="1320" height="572" alt="image" src="https://github.com/user-attachments/assets/4ad6e2fe-bc2a-454f-95b8-94ba87558811" />
+
 
 ### Filtering in Action
 Coordinators can easily filter candidates by minimum CGPA, specific required technical skills, or category. The list updates instantly.
-![Filtering Interface - Shows dropdowns and filtered table](screenshot-filtering.png)
+![Filtering Interface - Shows dropdowns and filtered table]<img width="1109" height="586" alt="image" src="https://github.com/user-attachments/assets/53ddd3f4-8488-4631-9401-2166b7f1034d" />
+
 
 ### Individual Student Detail View
 Clicking on any student opens a detailed panel explaining exactly *why* they received their specific grade, breaking down their projects, internships, and skill points.
-![Student Detail Panel - Shows rationale and full profile](screenshot-student-detail.png)
+![Student Detail Panel - Shows rationale and full profile]<img width="389" height="592" alt="image" src="https://github.com/user-attachments/assets/91e57b31-2bae-4d7c-9bb4-52d8cbd99475" />
+
+
 
 ---
 
