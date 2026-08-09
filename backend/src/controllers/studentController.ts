@@ -23,7 +23,7 @@ export const getStudentsHandler = (req: Request, res: Response) => {
 };
 
 export const getStudentByIdHandler = (req: Request, res: Response) => {
-  const id = parseInt(req.params.id);
+  const id = parseInt(req.params.id as string);
   const student = getStudentById(id);
   if (student) {
     res.json(student);

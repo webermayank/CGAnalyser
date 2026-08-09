@@ -1,6 +1,6 @@
 import type { Student, DashboardStats, FilterMeta } from '../types';
 
-const API_BASE = 'http://localhost:3001/api';
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
 export const fetchStudents = async (params: { minCgpa?: string; skill?: string; category?: string } = {}): Promise<Student[]> => {
   const query = new URLSearchParams(params as Record<string, string>).toString();
