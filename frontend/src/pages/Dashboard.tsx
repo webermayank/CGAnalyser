@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import type { Student, DashboardStats } from '../types';
 import { fetchStudents, fetchDashboardStats, fetchFiltersMeta } from '../services/api';
 
