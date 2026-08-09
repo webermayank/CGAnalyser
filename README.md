@@ -1,40 +1,68 @@
 # Smart Candidate Screening System
 
-This project automates the placement screening process for coordinators, replacing manual resume reviews with a transparent, rule-based scoring engine.
+**Live Deployed Application:** [https://your-frontend-link.onrender.com](https://your-frontend-link.onrender.com)  *(Replace with your actual live link)*  
+**GitHub Repository:** [https://github.com/webermayank/CGAnalyser](https://github.com/webermayank/CGAnalyser)  *(Replace with actual repo link)*  
 
-## Problem Solved
-Placement coordinators have to manually sift through hundreds of spreadsheets containing student data. This process is time-consuming, inconsistent, and often subjective. This system loads student data (CSV format), evaluates each candidate automatically based on a point-based scoring engine, and categorizes them into **Strong**, **Average**, or **Needs Improvement**. 
+---
 
-The most important feature is **transparency**: for every student, the dashboard provides a plain-English explanation for why they received their score and category, removing any "black-box" mystery.
+## 1. The Problem: Why Does This System Exist?
 
-## Features
-- **Instant Summary**: At-a-glance metrics showing how many students fall into each category.
-- **Dynamic Filtering**: Filter candidates instantly by minimum CGPA, specific skills, or category.
-- **Detailed View**: A comprehensive breakdown of a student's profile, including their score components and the generated explanation.
+Every year, college placement cells and HR recruiters receive hundreds, sometimes thousands, of student profiles. Placement coordinators must sit down and manually read through every single student's CGPA, technical skills, projects, and internships to decide if they are a strong candidate to recommend to top companies. 
 
-## Tech Stack
-- **Frontend**: React + Vite + TypeScript (Vanilla CSS with modern glassmorphic aesthetics)
-- **Backend**: Express + TypeScript + Node.js (In-memory CSV parsing)
+This manual process is highly flawed because it is:
+*   **Slow:** Reviewing hundreds of resumes takes days.
+*   **Inconsistent:** Two different coordinators might rate the same student differently.
+*   **Subjective:** Human fatigue often leads to mistakes or bias.
 
-## How to Run Locally
+**My Understanding & Solution:** 
+The goal of this system is to automate the first round of resume screening. By uploading a standard spreadsheet of student data, this software instantly evaluates every student using a fair, transparent, and rule-based system. It automatically groups students into categories, allowing a placement coordinator to log in and immediately see exactly who is ready for interviews, and exactly *why* they were selected, saving days of manual work.
 
-### Prerequisites
-- Node.js (v18+ recommended)
-- npm
+---
 
-### Running the Backend
-1. Open a terminal and navigate to the `backend` folder.
-2. Install dependencies: `npm install`
-3. Start the server: `npm run dev`
-   - The backend runs on `http://localhost:3001`
+## 2. How We Grade Candidates (Categorization Logic)
 
-### Running the Frontend
-1. Open a new terminal and navigate to the `frontend` folder.
-2. Install dependencies: `npm install`
-3. Start the Vite dev server: `npm run dev`
-   - Open your browser to `http://localhost:5173`
+We wanted a system that a non-technical placement officer could completely trust. There is no confusing "Artificial Intelligence" black box here. Instead, every student is graded on a simple **100-point scale**, mirroring how a real recruiter evaluates a candidate. 
 
-## Future Improvements
-- Add persistent database storage (PostgreSQL/MongoDB) when scaling up.
-- Add file upload capabilities to the frontend UI so users can upload new CSVs on the fly.
-- Implement authentication for placement coordinators.
+Here is exactly how the 100 points are awarded:
+
+*   **Academics (Up to 35 Points):** CGPA is heavily weighted. A perfect 10.0 CGPA earns maximum points, while lower scores earn proportionally less. Students with a CGPA below 5.0 receive 0 points in this category.
+*   **Technical Skills (Up to 25 Points):** Every relevant technical skill a student lists (e.g., Python, React, Java) is worth 5 points.
+*   **Projects (Up to 20 Points):** Practical experience matters. Every project a student has completed adds 10 points to their score.
+*   **Internships (Up to 15 Points):** Real-world industry exposure is highly valued. A single internship grants the full 15 points.
+*   **Certifications (Up to 5 Points):** Having any industry certification adds a bonus 5 points.
+
+Once a student's points are added up, they are placed into one of three categories:
+*   🟢 **Strong (75 to 100 points):** These are top-tier students. They have great academics combined with strong practical skills and projects. They are ready to be recommended to any company immediately.
+*   🟡 **Average (50 to 74 points):** These students are decent but missing a piece of the puzzle. They might have a great CGPA but no projects, or lots of skills but a low CGPA.
+*   🔴 **Needs Improvement (Under 50 points):** These students lack the necessary skills, projects, or grades for immediate placement and require further training and counseling.
+
+For full transparency, the dashboard generates a plain-English explanation for every single student, explicitly telling the coordinator exactly which factors contributed to their final score.
+
+---
+
+## 3. Application Screenshots
+
+*(Note: Replace the placeholder bracket links below with actual images of your application by dragging and dropping your screenshots into this document in GitHub or VS Code).*
+
+### The Dashboard & Student List View
+This is the main screen the placement coordinator sees. It provides a clean, enterprise-grade data table showing all candidates, alongside quick summary metrics at the top.
+![Dashboard Overview - Shows stats and main table](screenshot-dashboard.png)
+
+### Filtering in Action
+Coordinators can easily filter candidates by minimum CGPA, specific required technical skills, or category. The list updates instantly.
+![Filtering Interface - Shows dropdowns and filtered table](screenshot-filtering.png)
+
+### Individual Student Detail View
+Clicking on any student opens a detailed panel explaining exactly *why* they received their specific grade, breaking down their projects, internships, and skill points.
+![Student Detail Panel - Shows rationale and full profile](screenshot-student-detail.png)
+
+---
+
+## 4. Future Improvements (Next Steps)
+
+While this product solves the immediate pain point of manual screening, I am treating this as a real, evolving software product. If I had more time, here is how I would improve it next:
+
+1.  **Customizable Scoring Weights:** Different companies look for different things. I would add a settings page allowing the placement coordinator to adjust the scoring rules. For example, if a company doesn't care about CGPA but heavily values internships, the coordinator could adjust the sliders, and the entire student list would instantly re-score and re-categorize itself based on that specific company's needs.
+2.  **Direct CSV Export:** After filtering down to a list of "Strong" candidates with "React" skills, coordinators need to send this list to a hiring manager. I would add a one-click "Export to Excel/CSV" button.
+3.  **Authentication & Security:** Add a secure login system so only authorized college staff can upload data and view student information, ensuring data privacy compliance.
+4.  **Database Integration:** Currently, data is processed in-memory from a CSV. Moving this to a persistent database (like PostgreSQL) would allow historical tracking of placement statistics year over year.
